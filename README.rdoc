@@ -22,17 +22,18 @@ The following code will create one (and only one!) flight before running the exa
     end
 
     it "should be on_time" do
-      flight.should be_on_time
+      expect(flight).to be_on_time
     end
 
     it "should be cancellable" do
       flight.cancel
-      flight.should be_cancelled
+
+      expect(flight).to be_cancelled
     end
 
     it "should be delayable" do
       flight.delay
-      flight.should be_delayed
+      expect(flight).to be_delayed
     end
   end
 
@@ -62,7 +63,7 @@ and replace calls to <tt>#let</tt> creating active record objects by <tt>#set</t
 == TODO
 
 * support non saved active record objects (changes made to non saved active record objects won't be rolledback after each example)
-* make <tt>before(:all) running in a transaction - See: http://rhnh.net/2010/10/06/transactional-before-all-with-rspec-and-datamapper
+* make <tt>before(:all)</tt> running in a transaction - See: http://rhnh.net/2010/10/06/transactional-before-all-with-rspec-and-datamapper
 * support multi-level transactions (combinations of subcontext with set and changes made in before(:all) leads to weird behaviour sometimes
 
 
